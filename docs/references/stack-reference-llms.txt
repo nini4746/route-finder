@@ -1,0 +1,51 @@
+pygame reference for route-finder
+
+Purpose
+  pygame is the sole third-party runtime dependency for route-finder. It owns the
+  display surface, the event loop, font rendering, and basic shape primitives that
+  power the maze canvas, sidebar buttons, and speed slider.
+
+Canonical docs
+  https://www.pygame.org/docs/
+  (Consulted at install/dev time only. The running program makes zero outbound
+  network requests, including no doc fetches.)
+
+Local conventions
+  - pygame is imported only from src/route_finder/ui/. The maze and algorithms
+    packages MUST NOT import pygame, so the algorithm and invariant tests stay
+    pygame-free and headless-runnable.
+  - The pygame event loop is single-threaded and cooperative. The active maze
+    generator or pathfinder is a Python generator advanced N times per frame,
+    where N is derived from the speed slider value (1..60 steps/sec) and the
+    pygame clock tick.
+  - Cells are drawn as rectangles; A is green, B is red, visited cells are a
+    light tone, the final path is a high-contrast highlight. No images, no
+    sprites, no sounds.
+  - The canvas auto-scales to the current window size while preserving the
+    maze aspect ratio. Use pygame.transform.scale on an off-screen Surface so
+    the per-cell render stays integer-pixel.
+  - Forbidden patterns: pygame.mixer (no audio), pygame.image.load from a URL
+    (no network), threading.Thread driving pygame.event.post (single-threaded
+    only).
+
+Minimal pattern
+  import pygame
+
+  pygame.init()
+  screen = pygame.display.set_mode((1024, 768), pygame.RESIZABLE)
+  clock = pygame.time.Clock()
+
+  running = True
+  while running:
+      for event in pygame.event.get():
+          if event.type == pygame.QUIT:
+              running = False
+      # advance generator N times based on speed slider
+      # repaint canvas + sidebar
+      pygame.display.flip()
+      clock.tick(60)
+
+  pygame.quit()
+
+Stub disclaimer
+  This file is a stub. Replace with curated llms.txt content if/when needed.
