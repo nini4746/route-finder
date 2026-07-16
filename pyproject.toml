@@ -16,3 +16,9 @@ test = ["pytest"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+# src-layout: put the package on sys.path so `pytest` works from the repo
+# root without an editable install or an exported PYTHONPATH.
+pythonpath = ["src"]
+testpaths = ["tests"]

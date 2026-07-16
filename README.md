@@ -1,6 +1,6 @@
 # route-finder
 
-랜덤 미로 위에서 여러 길찾기 알고리즘이 A → B 경로를 찾아가는 과정을 시각화하는 macOS pygame 데스크톱 프로그램.
+랜덤 미로 위에서 여러 길찾기 알고리즘이 A → B 경로를 찾아가는 과정을 시각화하는 macOS pygame-ce 데스크톱 프로그램.
 
 ## 무엇을 보여주나
 
@@ -14,10 +14,10 @@
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install pygame
+pip install pygame-ce
 ```
 
-> 의존성은 `pygame` 단 하나 + 파이썬 표준 라이브러리. 다른 패키지를 추가로 깔지 마세요.
+> 의존성은 `pygame-ce` 단 하나 + 파이썬 표준 라이브러리. (import 는 `pygame` 이름 그대로 - pygame-ce 가 동일 모듈을 제공.) 다른 패키지를 추가로 깔지 마세요.
 
 ## 실행
 
