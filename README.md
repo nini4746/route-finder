@@ -9,6 +9,16 @@
   - BFS, DFS, Dijkstra, A*, Greedy Best-First, Bidirectional BFS
 - 알고리즘이 방문하는 칸은 색이 점진적으로 바뀌고, 종료 시 최종 경로가 하이라이트 색으로 덮어 그려짐.
 
+## 화면
+
+탐색 중 (A*, 방문 칸 파랑, 프런티어 옅은 파랑):
+
+![탐색 중](docs/images/ui-search.png)
+
+탐색 완료 (최종 경로 노랑):
+
+![경로](docs/images/ui-path.png)
+
 ## 설치 (macOS)
 
 ```bash
@@ -32,7 +42,7 @@ python -m route_finder
 | 사이드바 `New Maze` 클릭    | 새 미로 생성 (DFS Backtracker, 애니메이션) → A·B 재배치 → 색 리셋 |
 | 사이드바 알고리즘 버튼 클릭 | 해당 알고리즘 즉시 시작                                       |
 | 키보드 `1` ~ `6`            | 알고리즘 단축키 (1=BFS, 2=DFS, 3=Dijkstra, 4=A*, 5=Greedy BF, 6=Bi-BFS) |
-| 속도 슬라이더 (1 ~ 60)      | 한 초당 step 수 — 실행 중에도 즉시 반영                       |
+| 속도 슬라이더 (1 ~ 240)     | 한 초당 step 수 — 실행 중에도 즉시 반영                       |
 | 사이드바 `Reset Colors` 클릭 | 미로·A·B는 유지, 방문/경로 색만 초기화                        |
 | 창 리사이즈                 | 캔버스가 비율 유지하며 자동 스케일                            |
 

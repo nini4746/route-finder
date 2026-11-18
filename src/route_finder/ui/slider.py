@@ -40,22 +40,27 @@ class Slider:
             return True
         return False
 
-    def draw(self, surface: pygame.Surface, font: pygame.font.Font) -> None:
+    def draw(
+        self,
+        surface: pygame.Surface,
+        font: pygame.font.Font,
+        font_range: pygame.font.Font | None = None,
+    ) -> None:
         # Track
-        pygame.draw.rect(surface, (60, 60, 70), self.rect, border_radius=3)
-        # Fill
+        pygame.draw.rect(surface, (44, 50, 62), self.rect, border_radius=3)
+        # Fill (primary violet)
         fill_w = int(self.rect.width * self.fraction)
         if fill_w > 0:
             fill_rect = pygame.Rect(self.rect.x, self.rect.y, fill_w, self.rect.height)
-            pygame.draw.rect(surface, (90, 160, 230), fill_rect, border_radius=3)
-        # Knob
-        knob_x = self.rect.x + fill_w
-        pygame.draw.circle(
-            surface,
-            (240, 240, 245),
-            (knob_x, self.rect.y + self.rect.height // 2),
-            self.rect.height // 2 + 2,
-        )
-        # Label
-        text = font.render(f"Speed: {self.value} / sec", True, (230, 230, 235))
-        surface.blit(text, (self.rect.x, self.rect.y - text.get_height() - 4))
+            pygame.draw.rect(surface, (99, 84, 217), fill_rect, border_radius=3)
+        # Knob: light disc with a primary ring.
+        knob = (self.rect.x + fill_w, self.rect.y + self.rect.height // 2)
+        pygame.draw.circle(surface, (99, 84, 217), knob, 8)
+        pygame.draw.circle(surface, (228, 232, 238), knob, 7)
+        # Label and range
+        text = font.render(f"Speed: {self.value} / sec", True, (228, 232, 238))
+        ty = self.rect.y - text.get_height() - 8
+        surface.blit(text, (self.rect.x, ty))
+        if font_range is not None:
+            rng = font_range.render(f"{self.vmin}-{self.vmax}", True, (154, 163, 178))
+            surface.blit(rng, rng.get_rect(bottomright=(self.rect.right, ty + text.get_height())))

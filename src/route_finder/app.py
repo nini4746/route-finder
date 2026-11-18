@@ -518,7 +518,7 @@ class App:
             pygame.display.flip()
 
     def _render(self) -> None:
-        self.screen.fill((12, 12, 14))
+        self.screen.fill((15, 18, 22))
         win_w, win_h = self.screen.get_size()
         sidebar_rect = pygame.Rect(0, 0, SIDEBAR_WIDTH, win_h)
         canvas_rect = pygame.Rect(

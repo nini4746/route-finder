@@ -25,18 +25,18 @@ from __future__ import annotations
 
 import pygame
 
-# Colors (RGB)
-COLOR_BG = (24, 24, 28)
-COLOR_WALL = (240, 240, 245)
-COLOR_PASSAGE = (24, 24, 28)
-COLOR_VISITED = (90, 160, 230)
-# Pale-blue frontier tint, ~50% lighter than COLOR_VISITED while staying in
+# Colors (RGB). Palette from the Stitch redesign (docs/images/ui-*.png).
+COLOR_BG = (22, 26, 32)          # #161A20
+COLOR_WALL = (207, 214, 224)     # #CFD6E0
+COLOR_PASSAGE = (22, 26, 32)     # #161A20
+COLOR_VISITED = (41, 98, 158)    # #29629E
+# Pale-blue frontier tint, lighter than COLOR_VISITED while staying in
 # the same hue family so the eye groups them together.
-COLOR_FRONTIER = (150, 195, 235)
-COLOR_PATH = (255, 215, 70)
-COLOR_START = (50, 200, 80)
-COLOR_END = (220, 60, 60)
-COLOR_LETTERBOX = (12, 12, 14)
+COLOR_FRONTIER = (137, 196, 244)  # #89C4F4
+COLOR_PATH = (242, 201, 76)      # #F2C94C
+COLOR_START = (52, 178, 108)     # #34B26C
+COLOR_END = (224, 82, 82)        # #E05252
+COLOR_LETTERBOX = (15, 18, 22)   # #0F1216
 
 
 class Canvas:
